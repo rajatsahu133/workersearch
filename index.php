@@ -9,9 +9,15 @@ include_once(__DIR__."/mysql/connection.php");
 <head>
   <title>Home</title>
 </head>
-
+  <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 <body >
-  <img src="img/logo.png" float="right">
+
+  <ul>
+    <li><a href="index.php">LOGO</a></li>
+    <li style="float:right"><a class="active" href="LogIn.php">LogIn</a></li>
+    <li style="float:right"><a  class="active" href="SignUp.php">SignUp</a></li>
+  </ul>
+  <br><br><br>Skill:
   <select id="sel" align="middle">
     <option value="janitor">
       Janitor
@@ -29,7 +35,7 @@ include_once(__DIR__."/mysql/connection.php");
       Driver
     </option>
   </select><br>
-  <input type="text" name="Pin" id="pin"><br>
+    Pin:<input type="text" name="Pin" id="pin"><br>
   <button onclick=alert(document.getElementById("sel").value);>Search</button>
 
 </body>

@@ -1,32 +1,27 @@
-body {
-    background-color: lightblue;
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
 }
 
-h1 {
-    color: navy;
-    margin-left: 20px;
+li {
+    float: left;
 }
-.button {
-    background-color: #4CAF50; /* Green */
-    border: none;
+
+li a {
+    display: block;
     color: white;
-    padding: 16px 200px;
     text-align: center;
+    padding: 14px 16px;
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 200px;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    cursor: pointer;
-}
-.button5 {
-    background-color: white;
-    color: black;
-    border: 2px solid #555555;
 }
 
-.button5:hover {
-    background-color: #555555;
-    color: white;
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
 }
