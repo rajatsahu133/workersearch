@@ -1,33 +1,11 @@
-<?php /*useing session*/
-
-$dbhost = "localhost";
+<?php
+$servername = "localhost";
 $username = "root";
 $password = "";
-$database_name = "job";
+$dbname = "job";
 
-
-$con = mysqli_connect($dbhost,$username,$password,$database_name);
-
-if ($con) {
-	
-	//echo "Database conected sucessfull.<br>";
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
-else{
-	die('Could not connect: '.mysqli_connect_error()); 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?>

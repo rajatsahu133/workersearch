@@ -17,9 +17,8 @@ include_once(__DIR__."/mysql/connection.php");
     <li style="float:right"><a class="active" href="LogIn.php">LogIn</a></li>
     <li style="float:right"><a  class="active" href="SignUp.php">SignUp</a></li>
   </ul>
-  <form method="post" action="results.php">
   <br><br><br>Skill:
-  <select id="skill" align="middle" name="skill">
+  <select id="sel" align="middle">
     <option value="janitor">
       Janitor
     </option>
@@ -36,9 +35,8 @@ include_once(__DIR__."/mysql/connection.php");
       Driver
     </option>
   </select><br>
-    Pin:<input type="text" name="pin" id="pin"><br>
-  <input type="submit" name="Search" value="Search">
-    </form>
+    Pin:<input type="text" name="Pin" id="pin"><br>
+  <button onclick=alert(document.getElementById("sel").value);>Search</button>
 
 </body>
 </html>

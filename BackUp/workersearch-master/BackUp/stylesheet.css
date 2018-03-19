@@ -1,29 +1,10 @@
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
+body {
+    background-color: lightblue;
 }
 
-li {
-    float: left;
-}
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover:not(.active) {
-    background-color: #111;
-}
-
-.active {
-    background-color: #4CAF50;
+h1 {
+    color: navy;
+    margin-left: 20px;
 }
 .button {
     background-color: #4CAF50; /* Green */
@@ -43,4 +24,9 @@ li a:hover:not(.active) {
     background-color: white;
     color: black;
     border: 2px solid #555555;
+}
+
+.button5:hover {
+    background-color: #555555;
+    color: white;
 }
