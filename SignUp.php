@@ -128,7 +128,7 @@ echo "Could not insert record: <br>". mysqli_error($conn);
   	Email:<input type="Email" name="email" required placeholder="Enter email"><br>
     Profile Photo:<br>
     <input type="file"  name="image" id="image"><br>
-  	Mobile:<input type="text" name="mob" required placeholder="Enter eMobile number"><br>
+  	Mobile:<input type="text" name="mob" required placeholder="Enter Mobile number"><br>
     About:<input type="text" name="about" required placeholder="Write Somethimg about yourself"><br>
     <label for="password"> Password :</label>
     <input type="Password" name="password" id="password" placeholder="Enter a password" required=""><br>

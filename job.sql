@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2018 at 06:38 AM
+-- Generation Time: Mar 29, 2018 at 07:22 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -50,7 +50,7 @@ INSERT INTO `user` (`fn`, `ln`, `gender`, `address`, `skill`, `email`, `mobile`,
 ('Bikasgh', 'SAo', 'male', '758031', 'janitor', 'saobikash@gmail.com', '3238993199', '452391-bks.jpg', 'uid82766', 'Hi There,this is ranjit.Today i wiil be reviewing galaxy note 69.', ''),
 ('aaaaaaaaaaaaaaa', 'aaaaaaaaaaa', 'aaaaaaaaa', '758031', 'janitor', 'saobikash@gmail.com', '3238993199', '581077-bks.jpg', 'uid33014', 'sssssssssssssssssssssssssssssssssssssssss', ''),
 ('Bikash', 'Sao', 'male', '758031', 'janitor', 'saobikash@gmail.com', '8018504030', '482696-bks.jpg', 'uid81332', 'Hi There,this is ranjit.Today i wiil be reviewing galaxy note 69.', 'password'),
-('Bikash', 'sao', 'male', '758031', 'janitor', 'saobikash@gmail.com', '3238993199', '964148-bks.jpg', 'uid61362', 'admin', 'bikash');
+('Bikash1', 'sao1', 'male1', '7580311', 'repairman', 'saobikash1@gmail.com', '', '54984-bks.jpg', 'uid61362', 'Hi There,this is ranjit.Today i wiil be reviewing galaxy note 69.', 'bikash1');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

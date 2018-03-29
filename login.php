@@ -16,7 +16,7 @@ session_start();
  $_SESSION["uid"]=$recrow['uid'];
  //$url = "edit.php?uid=".$uid;
  //echo $uid;
- header('location: edit.php');
+ header('location: view.php');
 }
 
 }

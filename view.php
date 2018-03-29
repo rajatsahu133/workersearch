@@ -11,42 +11,7 @@ if ($result->num_rows > 0)
 		// echo $name;
 		}
 }
-if(isset($_POST['submit']))
-{
-	if($_FILES["image"]["error"]) {
-		$querry="UPDATE user SET fn='".$_POST['fn']."',ln='".$_POST['ln']."',gender='".$_POST['gender']."',address='".$_POST['address']."',skill='".$_POST['skill']."',email='".$_POST['email']."',mobile='".$_POST['mobile']."',about='".$_POST['about']."',password='".$_POST['password']."' WHERE uid='".$_POST['uid']."'";
-	$result1 = $conn->query($querry);
-	if($result1==TRUE)
-	{
-		header('location:view.php');
-	}
-	else{
-		echo "fail";
-	}
-		
-	}
-	else{
-	
-	/*upload image*/
-	
-	$image = rand(1000,100000)."-".$_FILES['image']['name'];
-  $file_loc = $_FILES['image']['tmp_name'];
-  $folder="img/user/";
-  move_uploaded_file($file_loc,$folder.$image);
-	/*upload image*/
-	
-	
-	$querry="UPDATE user SET fn='".$_POST['fn']."',ln='".$_POST['ln']."',gender='".$_POST['gender']."',address='".$_POST['address']."',skill='".$_POST['skill']."',email='".$_POST['email']."',mobile='".$_POST['mobile']."',about='".$_POST['about']."',password='".$_POST['password']."',image='$image' WHERE uid='".$_POST['uid']."'";
-	$result1 = $conn->query($querry);
-	if($result1==TRUE)
-	{
-		header('location:view.php');
-	}
-	else{
-		echo "fail";
-	}
-	}
-}
+
 
 
 ?>
@@ -144,85 +109,66 @@ if(isset($_POST['submit']))
 					 <div class="form-group">
 					    <label class="control-label col-sm-2" for="title" style="font-size: 14px;">First Name:</label>
 					    <div class="col-sm-6">
-					      <input type="text" name="fn" class="form-control"  value="<?php echo $recrow['fn'];?>" required>
+					      <input type="text" name="fn" class="form-control"  value="<?php echo $recrow['fn'];?>" required readonly>
 					    </div><br>
 					  </div>
 					  <div class="form-group">
 					    <label class="control-label col-sm-2" for="title" style="font-size: 14px;">Last Name:</label>
 					    <div class="col-sm-6">
-					      <input type="text" name="ln" class="form-control"  value="<?php echo $recrow['ln'];?>" required>
+					      <input type="text" name="ln" class="form-control"  value="<?php echo $recrow['ln'];?>" required readonly>
 					    </div><br>
 					  </div>
 					  <div class="form-group">
 					    <label class="control-label col-sm-2" for="title" style="font-size: 14px;">Gender:</label>
 					    <div class="col-sm-6">
-					      <input type="text" name="gender" class="form-control"  value="<?php echo $recrow['gender'];?>" required>
+					      <input type="text" name="gender" class="form-control"  value="<?php echo $recrow['gender'];?>" required readonly>
 					    </div><br>
 					  </div>
 					  <div class="form-group">
 					    <label class="control-label col-sm-2" for="title" style="font-size: 14px;">Address:</label>
 					    <div class="col-sm-6">
-					      <input type="text" name="address" class="form-control"  value="<?php echo $recrow['address'];?>" required>
+					      <input type="text" name="address" class="form-control"  value="<?php echo $recrow['address'];?>" required readonly>
 					    </div><br>
 					  </div><div class="form-group">
 					    <label class="control-label col-sm-2" for="title" style="font-size: 14px;">Skill:</label>
 					    <div class="col-sm-6">
-					      <select id="sel" align="middle" required name="skill">
-   							 <option value="janitor">
-      							Janitor
-    						</option>
-   							 <option value="painter">
-      							Painter
-    						</option>
-    						<option value="plumber">
-     							 Plumber
-    						</option>
-							<option value="repairman">
-     							 Repairman
-    						</option>
-    						<option value="driver">
-     							 Driver
-    						</option>
- 						 </select>
+					    	<input type="text" name="skill" class="form-control"  value="<?php echo $recrow['skill'];?>" required readonly>
 					    </div><br>
 					  </div>
+					      
 					  <div class="form-group">
 					    <label class="control-label col-sm-2" for="title" style="font-size: 14px;">Email:</label>
 					    <div class="col-sm-6">
-					      <input type="email" name="email" class="form-control"  value="<?php echo $recrow['email'];?>" required>
+					      <input type="email" name="email" class="form-control"  value="<?php echo $recrow['email'];?>" required readonly>
 					    </div><br>
 					  </div>
 					  <div class="form-group">
 					    <label class="control-label col-sm-2" for="title" style="font-size: 14px;">Password:</label>
 					    <div class="col-sm-6">
-					      <input type="text" name="password" class="form-control" id="password" value="<?php echo $recrow['password'];?>" required>
+					      <input type="text" name="password" class="form-control" id="password" value="<?php echo $recrow['password'];?>" required readonly>
 					    </div><br>
 					  </div>
-					  <div class="form-group">
-					    <label class="control-label col-sm-2" for="title" style="font-size: 14px;">Confirm  Password:</label>
-					    <div class="col-sm-6">
-					      <input type="text" name="confirm_password" id="confirm_password" class="form-control"  value="<?php echo $recrow['password'];?>" required>
-					    </div><br>
-					  </div>
+					 
 					  <div class="form-group">
 					    <label class="control-label col-sm-2" for="title" style="font-size: 14px;">Image:</label>
 					    <div class="col-sm-6">
 						  <img style="width: 300px;" src="img/user/<?php echo $recrow['image']?>" onerror="this.src = 'images.jpg';" alt="image">
 						  
-					      <input type="file" class="form-control" name="image" id="image">
+					      
 					    </div><br>
 					  </div>
 					  <div class="form-group">
 					    <label class="control-label col-sm-2" for="title" style="font-size: 14px;">About:</label>
 					    <div class="col-sm-6">
-					      <input type="text" name="about" id="about" class="form-control"  value="<?php echo $recrow['about'];?>" required>
+					      <input type="text" name="about" id="about" class="form-control"  value="<?php echo $recrow['about'];?>" required readonly>
 					    </div><br>
 					  </div>
 
 					   <?php }}?>	
 					   <div class="form-group"> 
 					    <div class="col-sm-offset-2 col-sm-10">
-					  <input type="submit" name="submit"   class="button button5 btn btn-success"  >
+					   <a href="edit.php">
+					   <button type="button" class="btn btn-info" >Edit Profile</button></a>
 					   </div>
 					  </div>
 					</form>
