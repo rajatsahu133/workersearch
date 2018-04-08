@@ -142,6 +142,11 @@ if ($result->num_rows > 0)
 					      <input type="email" name="email" class="form-control"  value="<?php echo $recrow['email'];?>" required readonly>
 					    </div><br>
 					  </div>
+					  <div class="form-group"> 
+              <label class="control-label col-sm-2" for="title" style="font-size: 14px;">Mobile No.:</label>
+              <div class="col-sm-6">
+                <input type="text" name="mobile" value="<?php echo $recrow['mobile'];?>" required readonly class="form-control" > </div><br>
+            </div>
 					  <div class="form-group">
 					    <label class="control-label col-sm-2" for="title" style="font-size: 14px;">Password:</label>
 					    <div class="col-sm-6">

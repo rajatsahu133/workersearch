@@ -164,34 +164,42 @@ if(isset($_POST['submit']))
 					    <div class="col-sm-6">
 					      <input type="text" name="address" class="form-control"  value="<?php echo $recrow['address'];?>" required>
 					    </div><br>
-					  </div><div class="form-group">
-					    <label class="control-label col-sm-2" for="title" style="font-size: 14px;">Skill:</label>
-					    <div class="col-sm-6">
-					      <select id="sel" align="middle" required name="skill">
-   							 <option value="janitor">
-      							Janitor
-    						</option>
-   							 <option value="painter">
-      							Painter
-    						</option>
-    						<option value="plumber">
-     							 Plumber
-    						</option>
-							<option value="repairman">
-     							 Repairman
-    						</option>
-    						<option value="driver">
-     							 Driver
-    						</option>
- 						 </select>
-					    </div><br>
 					  </div>
+			<div class="form-group"> 
+              <label class="control-label col-sm-2" for="title" style="font-size: 14px;">Skill:</label>
+              <div class="col-sm-6">
+                <select id="skill" align="middle" required name="skill">
+        <?php  
+
+        $query1="SELECT * FROM skill WHERE isactive = '1' ORDER BY skill";
+          $recresult=$conn->query($query1);
+          if($recresult->num_rows>0)
+          {
+            while($recrow=$recresult->fetch_assoc())
+              {?>
+
+      
+    <option value=<?php echo $recrow['skill'];?>>
+     <?php echo $recrow['skill'];?>
+     
+    </option>
+    <?php }
+              }
+              ?>
+    
+  </select></div><br>
+            </div>
 					  <div class="form-group">
 					    <label class="control-label col-sm-2" for="title" style="font-size: 14px;">Email:</label>
 					    <div class="col-sm-6">
 					      <input type="email" name="email" class="form-control"  value="<?php echo $recrow['email'];?>" required>
 					    </div><br>
 					  </div>
+					  <div class="form-group"> 
+              <label class="control-label col-sm-2" for="title" style="font-size: 14px;">Mobile No.:</label>
+              <div class="col-sm-6">
+                <input type="text" name="mobile" required placeholder="Enter your mobile number" class="form-control" > </div><br>
+            </div>
 					  <div class="form-group">
 					    <label class="control-label col-sm-2" for="title" style="font-size: 14px;">Password:</label>
 					    <div class="col-sm-6">

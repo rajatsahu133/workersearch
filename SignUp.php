@@ -1,8 +1,9 @@
 <?php  
+session_start();
 include 'mysql/connection.php';
 $uid="uid".rand(00001,99999);
 if(isset($_POST['submit'])){
-
+$_SESSION["uid"]=$uid;
 $image=rand(1000,1000000)."-".$_FILES['image']['name'];
 $file_loc = $_FILES['image']['tmp_name'];
   $folder="img/user/";
@@ -12,10 +13,10 @@ $file_loc = $_FILES['image']['tmp_name'];
 $sql="INSERT INTO user(fn,ln,gender,address,skill,email,mobile,image,uid,about,password)
 VALUES('".$_POST['fn']."','".$_POST['ln']."','".$_POST['gender']."',
 '".$_POST['address']."','".$_POST['skill']."','".$_POST['email']."',
-'".$_POST['mob']."','$image','$uid','".$_POST['about']."','".$_POST['password']."')";
+'".$_POST['mobile']."','$image','$uid','".$_POST['about']."','".$_POST['password']."')";
 if(mysqli_query($conn, $sql)){  
  //echo "<br>Record inserted successfully.<br>"; 
-  //header('location:SignUp.php?');
+  header('location:view.php?');
 }else{  
 echo "Could not insert record: <br>". mysqli_error($conn);  
 }  
@@ -102,41 +103,90 @@ echo "Could not insert record: <br>". mysqli_error($conn);
     <li style="float:right"><a class="active" href="LogIn.php">LogIn</a></li>
     <li style="float:right"><a  class="active" href="SignUp.php">SignUp</a></li>
   </ul>
-  <form action="SignUp.php" method="post"  id="form" enctype="multipart/form-data">
-
-	First Name:<input type="text" name="fn" required placeholder="Enter first name">
-	Last Name:<input type="text" name="ln" required placeholder="Enter last name"><br>
-	Gender:<input type="text" name="gender" required placeholder="Enter gender"><br>
-	Address:<input type="text" name="address" required placeholder="Enter address"><br>
-	Skill: <select id="sel" align="middle" required name="skill">
-    <option value="janitor">
-      Janitor
-    </option>
-    <option value="painter">
-      Painter
-    </option>
-    <option value="plumber">
-      Plumber
-    </option>
-    <option value="repairman">
-      Repairman
-    </option>
-    <option value="driver">
-      Driver
-    </option>
-  </select><br>
-  	Email:<input type="Email" name="email" required placeholder="Enter email"><br>
-    Profile Photo:<br>
-    <input type="file"  name="image" id="image"><br>
-  	Mobile:<input type="text" name="mob" required placeholder="Enter Mobile number"><br>
-    About:<input type="text" name="about" required placeholder="Write Somethimg about yourself"><br>
-    <label for="password"> Password :</label>
-    <input type="Password" name="password" id="password" placeholder="Enter a password" required=""><br>
-    <label for="confirm_password">confirm Password :</label>
-    <input type="Password" name="confirm_password" id="confirm_password" placeholder="Enter the same password" required=""><br>
+  <form action="SignUp.php" method="post"  id="form" enctype="multipart/form-data" class="form-horizontal" style="font-size: 14px;">
 
 
-  	<input type="submit" name="submit"   class="button button5 btn btn-success"  required>
+	<div class="form-group">
+              <label class="control-label col-sm-2" for="title" style="font-size: 14px;">First Name:</label>
+              <div class="col-sm-6">
+                <input type="text" name="fn" required placeholder="Enter first name" class="form-control">
+                </div><br>
+            </div>
+	<div class="form-group"> 
+              <label class="control-label col-sm-2" for="title" style="font-size: 14px;">Last Name:</label>
+              <div class="col-sm-6">
+                <input type="text" name="ln" required placeholder="Enter last name" class="form-control" > </div><br>
+            </div>
+	<div class="form-group"> 
+              <label class="control-label col-sm-2" for="title" style="font-size: 14px;">Gender:</label>
+              <div class="col-sm-6">
+                <input type="text" name="gender" required placeholder="Enter your gender" class="form-control" > </div><br>
+            </div>
+	<div class="form-group"> 
+              <label class="control-label col-sm-2" for="title" style="font-size: 14px;">Address:</label>
+              <div class="col-sm-6">
+                <input type="text" name="address" required placeholder="Enter your address" class="form-control" > </div><br>
+            </div>
+	<div class="form-group"> 
+              <label class="control-label col-sm-2" for="title" style="font-size: 14px;">Skill:</label>
+              <div class="col-sm-6">
+                <select id="skill" align="middle" required name="skill">
+        <?php  
+
+        $query1="SELECT * FROM skill WHERE isactive = '1' ORDER BY skill";
+          $recresult=$conn->query($query1);
+          if($recresult->num_rows>0)
+          {
+            while($recrow=$recresult->fetch_assoc())
+              {?>
+
+      
+    <option value=<?php echo $recrow['skill'];?>>
+     <?php echo $recrow['skill'];?>
+     
+    </option>
+    <?php }
+              }
+              ?>
+    
+  </select></div><br>
+            </div>
+  	<div class="form-group"> 
+              <label class="control-label col-sm-2" for="title" style="font-size: 14px;">Email:</label>
+              <div class="col-sm-6">
+                <input type="email" name="email" required placeholder="Enter your email address" class="form-control" > </div><br>
+            </div>
+    <div class="form-group"> 
+              <label class="control-label col-sm-2" for="title" style="font-size: 14px;">Profile Photo:</label>
+              <div class="col-sm-6">
+    <input type="file"  name="image" id="image" required="true"></div><br></div>
+  	<div class="form-group"> 
+              <label class="control-label col-sm-2" for="title" style="font-size: 14px;">Mobile No.:</label>
+              <div class="col-sm-6">
+                <input type="text" name="mobile" required placeholder="Enter your mobile number" class="form-control" > </div><br>
+            </div>
+    <div class="form-group"> 
+              <label class="control-label col-sm-2" for="title" style="font-size: 14px;">About:</label>
+              <div class="col-sm-6">
+                <input type="text" name="about" required placeholder="Write Something about you" class="form-control" > </div><br>
+            </div>
+    <div class="form-group"> 
+              <label class="control-label col-sm-2" for="title" style="font-size: 14px;">Password:</label>
+              <div class="col-sm-6">
+                <input type="password" id="password" name="password" required placeholder="Enter password" class="form-control" > </div><br>
+            </div>
+    <div class="form-group"> 
+              <label class="control-label col-sm-2" for="title" style="font-size: 14px;">Confirm Password:</label>
+              <div class="col-sm-6">
+                <input type="password" id="confirm_password" name="confirm_password" required placeholder="Again Enter password" class="form-control" > </div><br>
+            </div>
+
+
+  	 <div class="form-group"> 
+              <div class="col-sm-offset-2 col-sm-10">
+            <input type="submit" name="submit"   class="button button5 btn btn-success"  >
+             </div>
+            </div>
     </form>
 </body>
 </html>
