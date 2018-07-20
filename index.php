@@ -9,6 +9,7 @@ include("mysql/connection.php");
 <head>
   <title>Home</title>
 </head>
+ <-- Author Bikash Sao -->
 <script type="text/javascript" src="js/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
